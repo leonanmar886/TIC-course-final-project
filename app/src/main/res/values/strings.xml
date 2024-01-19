@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">RestaurantMenu</string>
+    <string name="agua_mineral">Água Mineral</string>
+    <string name="agua_mineral_descricao">500ml de água mineral</string>
+    <string name="bacalhau">Bacalhau</string>
+    <string name="bacalhau_descricao">Bacalhau com batatas e legumes</string>
+    <string name="banoffee">Banoffee</string>
+    <string name="banoffee_descricao">Torta de banana com doce de leite</string>
+    <string name="feijoada">Feijoada</string>
+    <string name="feijoada_descricao">Feijoada com arroz, couve e farofa</string>
+    <string name="medalhao">Medalhão</string>
+    <string name="medalhao_descricao">Medalhão de filé mignon com arroz e batata frita</string>
+    <string name="pao_de_alho">Pão de Alho</string>
+    <string name="pao_de_alho_descricao">Pão de alho com queijo</string>
+    <string name="pastel_de_camarao">Pastel de Camarão</string>
+    <string name="pastel_de_camarao_descricao">Pastel de camarão com catupiry</string>
+    <string name="pate_de_frango">Patê de Frango</string>
+    <string name="pate_de_frango_descricao">Patê de frango com torradas</string>
+    <string name="peixe_frito">Peixe Frito</string>
+    <string name="peixe_frito_descricao">Peixe frito com arroz e legumes</string>
+    <string name="pudim">Pudim</string>
+    <string name="pudim_descricao">Pudim de leite condensado</string>
+    <string name="ratatouille">Ratatouille</string>
+    <string name="ratatouille_descricao">Ratatouille com arroz e legumes</string>
+    <string name="refrigerante">Refrigerante</string>
+    <string name="refrigerante_descricao">Refrigerante de 500ml</string>
+    <string name="suco_de_laranja">Suco de Laranja</string>
+    <string name="suco_de_laranja_descricao">Suco de laranja natural</string>
+    <string name="torta_de_limao">Torta de Limão</string>
+    <string name="torta_de_limao_descricao">Torta de limão com merengue</string>
 </resources>
