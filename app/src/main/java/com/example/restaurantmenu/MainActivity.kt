@@ -5,13 +5,18 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
@@ -87,6 +92,7 @@ fun DishItem(dish: Dish){
     .background(Color.White)
     .padding(horizontal = 16.dp)
     .paddingFromBaseline(top = 24.dp)
+    .background(md_theme_light_primaryContainer)
   ){
     Text(
       text = stringResource(dish.name),
@@ -114,14 +120,45 @@ fun DishesList(
   LazyColumn(contentPadding = contentPadding){
     grouped.forEach{ (category, dishes) ->
       stickyHeader {
-        Text(
-          text = category.value,
+        Row(
           modifier = Modifier
-            .fillMaxWidth()
-            .paddingFromBaseline(top = 24.dp, bottom = 8.dp),
-          color = md_theme_light_primary,
-          style = MaterialTheme.typography.displayMedium
-        )
+            .fillMaxWidth(),
+          horizontalArrangement = Arrangement.Center,
+          verticalAlignment = Alignment.CenterVertically
+        ){
+          Column(modifier = Modifier.weight(1f).background(md_theme_light_primary)) {
+            Box(
+              modifier = Modifier
+                .height(height = 1.dp)
+                .background(color = Color.Blue)
+            )
+          }
+
+          Spacer(modifier = Modifier.width(3.dp))
+
+          Column(
+            modifier = Modifier.weight(1f),
+            horizontalAlignment = Alignment.CenterHorizontally
+
+          ) {
+            Text(
+              text = category.value,
+              modifier = Modifier
+                .paddingFromBaseline(top = 24.dp, bottom = 8.dp),
+              color = md_theme_light_primary,
+              style = MaterialTheme.typography.displayMedium
+            )
+          }
+
+          Spacer(modifier = Modifier.width(3.dp))
+
+          Column(modifier = Modifier.weight(1f).background(md_theme_light_primary)) {
+            Box(
+              modifier = Modifier
+                .height(height = 1.dp)
+            )
+          }
+        }
       }
 
       items(dishes) { dish ->
