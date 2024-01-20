@@ -116,18 +116,18 @@ fun DishNameAndDescription(
 ){
   Column(
     modifier = modifier
-      .padding(horizontal = 8.dp)
+      .padding(horizontal = 8.dp, vertical = 8.dp)
       .fillMaxWidth()
   ){
     Text(
       text = stringResource(dishName),
-      color = md_theme_light_onPrimary,
+      color = md_theme_light_primary,
       style = MaterialTheme.typography.bodyLarge
     )
     Spacer(modifier = Modifier.height(4.dp))
     Text(
       text = stringResource(dishDescription),
-      color = md_theme_light_onPrimary,
+      color = md_theme_light_primary,
       style = MaterialTheme.typography.labelSmall
     )
   }

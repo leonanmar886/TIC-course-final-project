@@ -1,8 +1,8 @@
 package com.example.restaurantmenu.enums
 
 enum class Category(val value: String) {
-  STARTER("Entrada"),
-  MAIN("Principal"),
-  DESSERT("Sobremesa"),
-  DRINK("Bebida")
+  STARTER("Entradas"),
+  MAIN("Principais"),
+  DESSERT("Sobremesas"),
+  DRINK("Bebidas")
 }
