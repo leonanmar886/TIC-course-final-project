@@ -5,6 +5,14 @@ import com.example.restaurantmenu.models.Dish
 
 val dishes = listOf<Dish>(
   Dish(
+    R.string.pao_de_alho,
+    R.string.pao_de_alho_descricao,
+    15.0,
+    R.drawable.paodealhocaseiro,
+    Category.STARTER,
+    10.0
+  ),
+  Dish(
     R.string.pudim,
     R.string.pudim_descricao,
     7.0,
@@ -27,14 +35,6 @@ val dishes = listOf<Dish>(
     R.drawable.tortadelimao,
     Category.DESSERT,
     2.0
-  ),
-  Dish(
-    R.string.pao_de_alho,
-    R.string.pao_de_alho_descricao,
-    15.0,
-    R.drawable.paodealhocaseiro,
-    Category.STARTER,
-    10.0
   ),
   Dish(
     R.string.agua_mineral,
