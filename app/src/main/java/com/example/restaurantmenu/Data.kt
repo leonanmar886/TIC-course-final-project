@@ -5,36 +5,28 @@ import com.example.restaurantmenu.models.Dish
 
 val dishes = listOf<Dish>(
   Dish(
-    R.string.pao_de_alho,
-    R.string.pao_de_alho_descricao,
+    R.string.tartine,
+    R.string.tartine_descricao,
     15.0,
-    R.drawable.paodealhocaseiro,
+    R.drawable.tartine,
     Category.STARTER,
     10.0
   ),
   Dish(
-    R.string.pudim,
-    R.string.pudim_descricao,
+    R.string.coq,
+    R.string.coq_descricao,
+    70.0,
+    R.drawable.coq,
+    Category.MAIN,
+    30.0
+  ),
+  Dish(
+    R.string.creme_brulee,
+    R.string.creme_brulee_descricao,
     7.0,
-    R.drawable.pudim,
+    R.drawable.creme,
     Category.DESSERT,
     0.0
-  ),
-  Dish(
-    R.string.banoffee,
-    R.string.banoffee_descricao,
-    8.0,
-    R.drawable.banoffe,
-    Category.DESSERT,
-    1.0
-  ),
-  Dish(
-    R.string.torta_de_limao,
-    R.string.torta_de_limao_descricao,
-    6.0,
-    R.drawable.tortadelimao,
-    Category.DESSERT,
-    2.0
   ),
   Dish(
     R.string.agua_mineral,
@@ -45,52 +37,68 @@ val dishes = listOf<Dish>(
     0.0
   ),
   Dish(
-    R.string.bacalhau,
-    R.string.bacalhau_descricao,
-    70.0,
-    R.drawable.bacalhau,
-    Category.MAIN,
-    30.0
+    R.string.coquilles,
+    R.string.coquilles_descricao,
+    8.0,
+    R.drawable.coquilles,
+    Category.STARTER,
+    1.0
   ),
   Dish(
-    R.string.feijoada,
-    R.string.feijoada_descricao,
+    R.string.salada,
+    R.string.salada_descricao,
+    6.0,
+    R.drawable.salada,
+    Category.STARTER,
+    2.0
+  ),
+  Dish(
+    R.string.quiche,
+    R.string.quiche_descricao,
     50.0,
-    R.drawable.feijoada,
-    Category.MAIN,
+    R.drawable.quiche,
+    Category.STARTER,
     30.0
   ),
   Dish(
-    R.string.medalhao,
-    R.string.medalhao_descricao,
+    R.string.bouilabaisse,
+    R.string.bouilabaisse_descricao,
     60.0,
-    R.drawable.medalhao,
+    R.drawable.bouillabaisse,
     Category.MAIN,
     40.0
   ),
   Dish(
-    R.string.pastel_de_camarao,
-    R.string.pastel_de_camarao_descricao,
+    R.string.cassoulet,
+    R.string.cassoulet_descricao,
     30.0,
-    R.drawable.pasteldecamarao,
-    Category.STARTER,
-    15.0
-  ),
-  Dish(
-    R.string.pate_de_frango,
-    R.string.pate_de_frango_descricao,
-    25.0,
-    R.drawable.patedefrangocomcenoura,
-    Category.STARTER,
-    15.0
-  ),
-  Dish(
-    R.string.peixe_frito,
-    R.string.peixe_frito_descricao,
-    60.0,
-    R.drawable.peixefrito,
+    R.drawable.cassoulet,
     Category.MAIN,
+    15.0
+  ),
+  Dish(
+    R.string.tarte,
+    R.string.tarte_descricao,
+    25.0,
+    R.drawable.tarte,
+    Category.DESSERT,
+    15.0
+  ),
+  Dish(
+    R.string.macarons,
+    R.string.macarons_descricao,
+    60.0,
+    R.drawable.macarons,
+    Category.DESSERT,
     50.0
+  ),
+  Dish(
+    R.string.eclair,
+    R.string.eclair_descricao,
+    30.0,
+    R.drawable.eclair,
+    Category.DESSERT,
+    20.0
   ),
   Dish(
     R.string.ratatouille,
