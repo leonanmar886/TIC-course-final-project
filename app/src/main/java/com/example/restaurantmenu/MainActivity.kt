@@ -23,25 +23,31 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.restaurantmenu.enums.Category
 import com.example.restaurantmenu.models.Dish
 import com.example.restaurantmenu.theme.RestaurantMenuTheme
 import com.example.restaurantmenu.theme.md_theme_light_onPrimary
-import com.example.restaurantmenu.theme.md_theme_light_onPrimaryContainer
 import com.example.restaurantmenu.theme.md_theme_light_primary
 import com.example.restaurantmenu.theme.md_theme_light_primaryContainer
 
@@ -94,18 +100,33 @@ fun RestaurantMenuApp() {
 
 @Composable
 fun DishItem(dish: Dish){
-  Row(modifier = Modifier
-    .fillMaxWidth()
-    .height(60.dp)
-    .background(md_theme_light_primaryContainer)
-    .padding(horizontal = 8.dp)
+  var dishState by remember { mutableStateOf(false) }
+
+  Row(
+    modifier = Modifier
+      .fillMaxWidth()
+      .height(60.dp)
+      .background(md_theme_light_primaryContainer),
+    verticalAlignment = Alignment.CenterVertically,
+    horizontalArrangement = Arrangement.SpaceBetween
   ){
+    Box(
+      modifier = Modifier
+        .size(35.dp),
+      contentAlignment = Alignment.Center,
+    ){
+      Checkbox(
+        checked = dishState,
+        onCheckedChange = { dishState = it },
+        modifier = Modifier.scale(scale = 0.6f)
+      )
+    }
     DishImage(imageRes = dish.image)
     DishInfo(
       dishName = dish.name,
       dishDescription = dish.description,
       dishPrepareTime = dish.preparationTime,
-      modifier = Modifier
+      modifier = Modifier,
     )
   }
 }
@@ -115,7 +136,7 @@ fun DishInfo(
   @StringRes dishName: Int,
   @StringRes dishDescription: Int,
   dishPrepareTime: Double,
-  modifier: Modifier
+  modifier: Modifier,
 ){
   val prepareTimeString = if(dishPrepareTime > 1.0){
     stringResource(R.string.prepare_time, dishPrepareTime) + " minutos"
@@ -144,13 +165,21 @@ fun DishInfo(
   }
   Column (
     modifier = modifier
-      .padding(horizontal = 10.dp, vertical = 8.dp)
+      .padding(horizontal = 7.dp, vertical = 8.dp)
+      .fillMaxSize(),
+    horizontalAlignment = Alignment.Start,
+    verticalArrangement = Arrangement.Top
   ) {
     Text(
       text = prepareTimeString,
       color = md_theme_light_primary,
-      style = MaterialTheme.typography.labelSmall,
-      modifier = modifier.align(Alignment.End)
+      style = MaterialTheme.typography.labelSmall
+    )
+    Spacer(modifier = Modifier.height(8.dp))
+    Text(
+      text = stringResource(R.string.price, dishPrepareTime),
+      color = md_theme_light_primary,
+      style = MaterialTheme.typography.labelSmall
     )
   }
 }

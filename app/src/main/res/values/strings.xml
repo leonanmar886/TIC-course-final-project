@@ -5,7 +5,7 @@
     <string name="agua_mineral_descricao">500ml de água mineral</string>
     <string name="tartine">Tartine</string>
     <string name="tartine_descricao">Pão rústico coberto com uma variedade de coberturas</string>
-    <string name="coquilles">Coquilles Saint-Jacques</string>
+    <string name="coquilles">Coquilles Saint</string>
     <string name="coquilles_descricao">Vieiras grelhadas com molho de vinho branco, cogumelos e cebolinha</string>
     <string name="salada">Salada Niçoise</string>
     <string name="salada_descricao">Salada de atum com tomate, ovos, batatas e azeitonas</string>
@@ -33,4 +33,6 @@
     <string name="suco_de_laranja_descricao">Suco de laranja natural</string>
     <string name="prepare_time">Tempo de preparo: %.0f</string>
     <string name="prepare_time_null">Tempo de preparo: Este item não requer tempo de preparo.</string>
+    <string name="price">Preço: R$ %.2f</string>
+    <string name="add_dish">Adicionar ao pedido</string>
 </resources>
