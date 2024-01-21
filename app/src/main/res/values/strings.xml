@@ -31,4 +31,6 @@
     <string name="eclair_descricao">Pão de massa choux recheado com creme e coberto com chocolate</string>
     <string name="suco_de_laranja">Suco de Laranja</string>
     <string name="suco_de_laranja_descricao">Suco de laranja natural</string>
+    <string name="prepare_time">Tempo de preparo: %.0f</string>
+    <string name="prepare_time_null">Tempo de preparo: Este item não requer tempo de preparo.</string>
 </resources>

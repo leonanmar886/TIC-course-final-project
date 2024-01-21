@@ -41,6 +41,7 @@ import com.example.restaurantmenu.enums.Category
 import com.example.restaurantmenu.models.Dish
 import com.example.restaurantmenu.theme.RestaurantMenuTheme
 import com.example.restaurantmenu.theme.md_theme_light_onPrimary
+import com.example.restaurantmenu.theme.md_theme_light_onPrimaryContainer
 import com.example.restaurantmenu.theme.md_theme_light_primary
 import com.example.restaurantmenu.theme.md_theme_light_primaryContainer
 
@@ -100,24 +101,33 @@ fun DishItem(dish: Dish){
     .padding(horizontal = 8.dp)
   ){
     DishImage(imageRes = dish.image)
-    DishNameAndDescription(
+    DishInfo(
       dishName = dish.name,
       dishDescription = dish.description,
+      dishPrepareTime = dish.preparationTime,
       modifier = Modifier
     )
   }
 }
 
 @Composable
-fun DishNameAndDescription(
+fun DishInfo(
   @StringRes dishName: Int,
   @StringRes dishDescription: Int,
+  dishPrepareTime: Double,
   modifier: Modifier
 ){
+  val prepareTimeString = if(dishPrepareTime > 1.0){
+    stringResource(R.string.prepare_time, dishPrepareTime) + " minutos"
+  } else if (dishPrepareTime == 1.0){
+    stringResource(R.string.prepare_time, dishPrepareTime) + " minuto"
+  } else {
+    stringResource(R.string.prepare_time_null)
+  }
+
   Column(
     modifier = modifier
       .padding(horizontal = 8.dp, vertical = 8.dp)
-      .fillMaxWidth()
   ){
     Text(
       text = stringResource(dishName),
@@ -128,7 +138,19 @@ fun DishNameAndDescription(
     Text(
       text = stringResource(dishDescription),
       color = md_theme_light_primary,
-      style = MaterialTheme.typography.labelSmall
+      style = MaterialTheme.typography.labelSmall,
+      modifier = modifier.fillMaxWidth(0.5f)
+    )
+  }
+  Column (
+    modifier = modifier
+      .padding(horizontal = 10.dp, vertical = 8.dp)
+  ) {
+    Text(
+      text = prepareTimeString,
+      color = md_theme_light_primary,
+      style = MaterialTheme.typography.labelSmall,
+      modifier = modifier.align(Alignment.End)
     )
   }
 }
