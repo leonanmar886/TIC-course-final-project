@@ -194,6 +194,7 @@ fun DishItem(dish: Dish){
       dishName = dish.name,
       dishDescription = dish.description,
       dishPrepareTime = dish.preparationTime,
+      dishPrice = dish.price,
       modifier = Modifier,
     )
   }
@@ -204,6 +205,7 @@ fun DishInfo(
   @StringRes dishName: Int,
   @StringRes dishDescription: Int,
   dishPrepareTime: Double,
+  dishPrice: Double,
   modifier: Modifier,
 ){
   val prepareTimeString = if(dishPrepareTime > 1.0){
@@ -265,7 +267,7 @@ fun DishInfo(
     )
     Spacer(modifier = Modifier.height(8.dp))
     Text(
-      text = stringResource(R.string.price, dishPrepareTime),
+      text = stringResource(R.string.price, dishPrice),
       color = md_theme_light_primary,
       style = MaterialTheme.typography.labelSmall
     )
