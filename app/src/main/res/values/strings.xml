@@ -39,4 +39,5 @@
     <string name="item_list">Lista de itens: </string>
     <string name="dish_list_empty">Escolha pelo menos um prato para finalizar o pedido</string>
     <string name="order_finished">Seu pedido foi enviado para o balcão do restaurante</string>
+    <string name="observations">Observações do seu pedido</string>
 </resources>

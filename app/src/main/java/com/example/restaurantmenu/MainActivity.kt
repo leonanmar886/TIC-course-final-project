@@ -31,6 +31,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableDoubleStateOf
@@ -46,6 +48,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.restaurantmenu.enums.Category
@@ -210,6 +214,8 @@ fun DishInfo(
     stringResource(R.string.prepare_time_null)
   }
 
+  var observations by remember { mutableStateOf("") }
+
   Column(
     modifier = modifier
       .padding(horizontal = 8.dp, vertical = 8.dp)
@@ -238,6 +244,24 @@ fun DishInfo(
       text = prepareTimeString,
       color = md_theme_light_primary,
       style = MaterialTheme.typography.labelSmall
+    )
+    Spacer(modifier = Modifier.height(8.dp))
+    TextField(
+      label = {
+        Text("Enter text", modifier = Modifier.align(Alignment.Start))
+      },
+      maxLines = 2,
+      textStyle = TextStyle(color = Color.Blue, fontWeight = FontWeight.Bold),
+      modifier = Modifier.height(8.dp),
+      colors = TextFieldDefaults.colors(
+        unfocusedContainerColor = md_theme_light_primaryContainer,
+        focusedContainerColor = md_theme_light_primaryContainer,
+        focusedTextColor = md_theme_light_primary,
+        focusedIndicatorColor = md_theme_light_primary,
+        unfocusedIndicatorColor = md_theme_light_primary
+      ),
+      value = observations,
+      onValueChange = {observations = it}
     )
     Spacer(modifier = Modifier.height(8.dp))
     Text(
