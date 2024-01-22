@@ -1,11 +1,15 @@
 package com.example.restaurantmenu.models
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableDoubleStateOf
+import androidx.compose.runtime.mutableStateOf
+
 data class Order(
   var dishes: MutableList<Dish>,
-  var totalPrice: Double,
+  var totalPrice: MutableState<Double> = mutableDoubleStateOf(0.0),
   var orderNumber: Int
 ) {
-  constructor() : this(mutableListOf(), 0.0, 0)
+  constructor() : this(mutableListOf(), mutableDoubleStateOf(0.0), 0)
   fun addDish(dish: Dish) {
     if (dishes.contains(dish)) {
       return
@@ -25,6 +29,7 @@ data class Order(
     for (dish in dishes) {
       total += dish.price
     }
+    totalPrice.value = total
     return total
   }
 }

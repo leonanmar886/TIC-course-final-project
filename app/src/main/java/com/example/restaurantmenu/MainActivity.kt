@@ -32,6 +32,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -96,6 +97,7 @@ fun RestaurantMenuApp() {
       }
     },
     bottomBar = {
+      var totalValue by remember { mutableDoubleStateOf(0.0) }
       Row(
         modifier = Modifier
           .fillMaxWidth()
@@ -143,7 +145,7 @@ fun RestaurantMenuApp() {
         ) {
           Text(
             text = stringResource(R.string.total,
-              order.totalPrice),
+              order.totalPrice.value),
             color = md_theme_light_onPrimary,
             style = MaterialTheme.typography.bodyLarge
           )
@@ -161,6 +163,15 @@ fun RestaurantMenuApp() {
 @Composable
 fun DishItem(dish: Dish){
   var dishState by remember { mutableStateOf(false) }
+  fun updateOrder(newValue: Boolean){
+    if(newValue){
+      order.addDish(dish)
+    } else {
+      order.removeDish(dish)
+    }
+    order.calculateTotalPrice()
+    dishState = newValue
+  }
 
   Row(
     modifier = Modifier
@@ -177,7 +188,7 @@ fun DishItem(dish: Dish){
     ){
       Checkbox(
         checked = dishState,
-        onCheckedChange = { dishState = it },
+        onCheckedChange = { updateOrder(it) },
         modifier = Modifier.scale(scale = 0.6f)
       )
     }
