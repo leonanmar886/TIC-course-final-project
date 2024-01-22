@@ -248,7 +248,7 @@ fun DishInfo(
     Spacer(modifier = Modifier.height(8.dp))
     TextField(
       label = {
-        Text("Enter text", modifier = Modifier.align(Alignment.Start))
+        Text("Enter text", modifier = Modifier.align(Alignment.Start), style = MaterialTheme.typography.displaySmall)
       },
       maxLines = 2,
       textStyle = TextStyle(color = Color.Blue, fontWeight = FontWeight.Bold),

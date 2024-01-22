@@ -41,6 +41,6 @@ val Typography = Typography(
   displaySmall = TextStyle(
     fontFamily = Montserrat,
     fontWeight = FontWeight.Normal,
-    fontSize = 1.sp
+    fontSize = 4.sp
   ),
 )
