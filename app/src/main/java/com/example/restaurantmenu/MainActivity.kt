@@ -1,6 +1,7 @@
 package com.example.restaurantmenu
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
@@ -41,6 +42,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -97,66 +99,57 @@ fun RestaurantMenuApp() {
       }
     },
     bottomBar = {
-      var totalValue by remember { mutableDoubleStateOf(0.0) }
-      Row(
-        modifier = Modifier
-          .fillMaxWidth()
-          .height(90.dp)
-          .background(md_theme_light_primary),
-        verticalAlignment = Alignment.CenterVertically
-      )
-      {
-        Column(
-          modifier = Modifier.weight(1f),
-          horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-          Text(text = stringResource(R.string.item_list),
-            color = md_theme_light_onPrimary,
-            style = MaterialTheme.typography.bodyLarge
-          )
-          LazyColumn{
-            items(order.dishes) { dish ->
-              Text(
-                text = "- " + stringResource(dish.name),
-                color = md_theme_light_onPrimary,
-                style = MaterialTheme.typography.bodyMedium
-              )
-              Spacer(modifier = Modifier.height(8.dp))
-            }
-          }
-        }
-
-        Column(
-          modifier = Modifier.weight(1f),
-          horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-          Button(onClick = { /*TODO*/ }, colors = ButtonDefaults.buttonColors(containerColor = md_theme_light_primaryContainer)) {
-            Text(
-              text = stringResource(R.string.finish_order),
-              color = md_theme_light_onPrimaryContainer,
-              style = MaterialTheme.typography.bodyLarge
-            )
-          }
-        }
-
-        Column(
-          modifier = Modifier.weight(1f),
-          horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-          Text(
-            text = stringResource(R.string.total,
-              order.totalPrice.value),
-            color = md_theme_light_onPrimary,
-            style = MaterialTheme.typography.bodyLarge
-          )
-        }
-      }
+        BottomAppBar()
     }
   ){
     DishesList(
       grouped = grouped,
       contentPadding = it
     )
+  }
+}
+
+@Composable
+fun BottomAppBar(){
+  val context = LocalContext.current
+  val finishOrderToastMessage = if(order.dishes.isEmpty()) stringResource(R.string.dish_list_empty) else stringResource(R.string.order_finished)
+
+  fun handleFinishOrder(){
+    Toast.makeText(context, finishOrderToastMessage, Toast.LENGTH_LONG).show()
+  }
+
+  Row(
+    modifier = Modifier
+      .fillMaxWidth()
+      .height(90.dp)
+      .background(md_theme_light_primary),
+    verticalAlignment = Alignment.CenterVertically
+  )
+  {
+    Column(
+      modifier = Modifier.weight(1f),
+      horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+      Text(
+        text = stringResource(R.string.total,
+          order.totalPrice.value),
+        color = md_theme_light_onPrimary,
+        style = MaterialTheme.typography.bodyLarge
+      )
+    }
+
+    Column(
+      modifier = Modifier.weight(1f),
+      horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+      Button(onClick = { handleFinishOrder() }, colors = ButtonDefaults.buttonColors(containerColor = md_theme_light_primaryContainer)) {
+        Text(
+          text = stringResource(R.string.finish_order),
+          color = md_theme_light_onPrimaryContainer,
+          style = MaterialTheme.typography.bodyLarge
+        )
+      }
+    }
   }
 }
 
