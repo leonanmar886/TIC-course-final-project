@@ -34,5 +34,7 @@
     <string name="prepare_time">Tempo de preparo: %.0f</string>
     <string name="prepare_time_null">Tempo de preparo: Este item não requer tempo de preparo.</string>
     <string name="price">Preço: R$ %.2f</string>
-    <string name="add_dish">Adicionar ao pedido</string>
+    <string name="finish_order">Finalizar</string>
+    <string name="total">Total: R$ %.2f</string>
+    <string name="item_list">Lista de itens: </string>
 </resources>

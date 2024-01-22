@@ -23,6 +23,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -41,17 +43,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.restaurantmenu.enums.Category
 import com.example.restaurantmenu.models.Dish
+import com.example.restaurantmenu.models.Order
 import com.example.restaurantmenu.theme.RestaurantMenuTheme
 import com.example.restaurantmenu.theme.md_theme_light_onPrimary
+import com.example.restaurantmenu.theme.md_theme_light_onPrimaryContainer
 import com.example.restaurantmenu.theme.md_theme_light_primary
 import com.example.restaurantmenu.theme.md_theme_light_primaryContainer
 
 val grouped = dishes.groupBy { it.category }
+
+val order = Order()
 
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,6 +93,61 @@ fun RestaurantMenuApp() {
           style = MaterialTheme.typography.displayLarge
           )
 
+      }
+    },
+    bottomBar = {
+      Row(
+        modifier = Modifier
+          .fillMaxWidth()
+          .height(90.dp)
+          .background(md_theme_light_primary),
+        verticalAlignment = Alignment.CenterVertically
+      )
+      {
+        Column(
+          modifier = Modifier.weight(1f),
+          horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+          Text(text = stringResource(R.string.item_list),
+            color = md_theme_light_onPrimary,
+            style = MaterialTheme.typography.bodyLarge
+          )
+          LazyColumn{
+            items(order.dishes) { dish ->
+              Text(
+                text = "- " + stringResource(dish.name),
+                color = md_theme_light_onPrimary,
+                style = MaterialTheme.typography.bodyMedium
+              )
+              Spacer(modifier = Modifier.height(8.dp))
+            }
+          }
+        }
+
+        Column(
+          modifier = Modifier.weight(1f),
+          horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+          Button(onClick = { /*TODO*/ }, colors = ButtonDefaults.buttonColors(containerColor = md_theme_light_primaryContainer)) {
+            Text(
+              text = stringResource(R.string.finish_order),
+              color = md_theme_light_onPrimaryContainer,
+              style = MaterialTheme.typography.bodyLarge
+            )
+          }
+        }
+
+        Column(
+          modifier = Modifier.weight(1f),
+          horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+          Text(
+            text = stringResource(R.string.total,
+              order.totalPrice),
+            color = md_theme_light_onPrimary,
+            style = MaterialTheme.typography.bodyLarge
+          )
+        }
       }
     }
   ){
